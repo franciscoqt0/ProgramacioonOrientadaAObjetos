@@ -1,22 +1,30 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-void evaluar(bool p, bool q) {
-    if ((p || q) && (p || !q)) {
-        cout << "Verdadero\n";
-    } else {
-        cout << "Falso\n";
-    }
+bool evaluar(bool p, bool q) {
+    return (p || q) && (p || !q);
 }
 
 int main() {
-    for(int i = 0; i <= 1; i++){
-        for(int j = 0; j <= 1; j++){
-            bool p = i; // 0 -> false, 1 -> true
-            bool q = j;
-            cout << "p = " << p << ", q = " << q << " => ";
-            evaluar(p, q);
-        } 
+    cout << boolalpha << left;
+
+    // Encabezado
+    cout << setw(7) << "p" << " | "
+         << setw(7) << "q" << " | "
+         << setw(10) << "Resultado" << "\n";
+    cout << string(7, '-') << "-+-"
+         << string(7, '-') << "-+-"
+         << string(10, '-') << "\n";
+
+    for (int i = 0; i <= 1; i++) {
+        for (int j = 0; j <= 1; j++) {
+            bool p = i, q = j;
+            cout << setw(7) << p << " | "
+                 << setw(7) << q << " | "
+                 << setw(10) << (evaluar(p, q) ? "Verdadero" : "Falso")
+                 << '\n';
+        }
     }
     return 0;
 }
