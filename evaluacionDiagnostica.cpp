@@ -2,19 +2,47 @@
 #include <iostream>
 using namespace std;
 
-double fraccion(int a, int b) {
-    if (b == 0) {
-        throw invalid_argument("El denominador no puede ser cero.");
+class fraccion{
+private:
+    int a;
+    int b;
+public:
+    // Constructor
+    fraccion(int num, int den) {
+        if (den == 0) {
+            cout << "Error: Denominator cannot be zero." << endl;
+            a = num;
+            b = 1; // Default to var/1 if denominator is zero
+        } else {
+            a = num;
+            b = den;
+        }
     }
-    return a / b;
+
+}
+class matriz{
+private: 
+    int n;
+
+public:
+    // Constructor
+    matriz(int n){
+        int mat1[n][n];
+        int mat2[n][n];
+    }
+    double addElementMat(double mat[][], int i, int j, double value) {
+        mat[i][j] = value;
+    }
 }
 
 int main() {
-    int tamano;
+    int t;
 
-    cout << "Ingresa el numero el tamaño de las matrices a evaluar, tomando"
+    cout << "Ingresa el numero para el tamaño de las matrices a evaluar, tomando"
          << " en cuenta que es una matriz cuadrada: ";
-    cin >> tamano;
+    cin >> t;
+    matriz m(t);
+    
     
     return 0;
 }
