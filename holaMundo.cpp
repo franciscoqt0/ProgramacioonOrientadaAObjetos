@@ -3,7 +3,7 @@
 using namespace std;
 
 bool evaluar(bool p, bool q) {
-    return (p || q) && (p || !q);
+    return ((!p) || ((!q) || p));
 }
 
 int main() {
