@@ -1,0 +1,2 @@
+g++ C:\Users\recepfamm\Documents\frank\GitHub\huespedesEsp\ProgramacioonOrientadaAObjetos\holaMundo.cpp -std=c++17 -O2 -o C:\Users\recepfamm\Documents\frank\GitHub\huespedesEsp\ProgramacioonOrientadaAObjetos\holaMundo.exe
+C:\Users\recepfamm\Documents\frank\GitHub\huespedesEsp\ProgramacioonOrientadaAObjetos\holaMundo.exe

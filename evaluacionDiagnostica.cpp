@@ -1,48 +1,53 @@
 #include <iomanip>
 #include <iostream>
+#include <vector>
+#include <stdexcept>
+#include <numeric>
 using namespace std;
 
 class fraccion{
 private:
-    int a;
-    int b;
-public:
-    // Constructor
-    fraccion(int num, int den) {
-        if (den == 0) {
-            cout << "Error: Denominator cannot be zero." << endl;
-            a = num;
-            b = 1; // Default to var/1 if denominator is zero
-        } else {
-            a = num;
-            b = den;
+    int num;
+    int den;
+
+    // Método privado para simplificar
+    void simplificar() {
+        int mcd = gcd(num, den); // máximo común divisor
+        num /= mcd;
+        den /= mcd;
+        if (den < 0) { // evitar denominadores negativos
+            num = -num;
+            den = -den;
         }
     }
-
-}
-class matriz{
-private: 
-    int n;
-
 public:
     // Constructor
-    matriz(int n){
-        int mat1[n][n];
-        int mat2[n][n];
+    fraccion(int n, int d) : num(n), den(d) {
+        if (den == 0) throw invalid_argument("El denominador no puede ser cero");
+        simplificar();
     }
-    double addElementMat(double mat[][], int i, int j, double value) {
-        mat[i][j] = value;
-    }
-}
+
+};
 
 int main() {
     int t;
 
-    cout << "Ingresa el numero para el tamaño de las matrices a evaluar, tomando"
-         << " en cuenta que es una matriz cuadrada: ";
+    cout << "Ingresa el tamaño de las 2 matrices cuadradas: ";
     cin >> t;
-    matriz m(t);
-    
-    
+    vector<vector<double>> mat1(t, vector<double>(t, 0.0));
+    vector<vector<double>> mat2(t, vector<double>(t, 0.0));
+
+    for (int i = 0; i < t; i++) {
+        for (int j = 0; j < t; j++) {
+            cout << "Ingresa el numerador de la fila " << i + 1 << " y columna " << j + 1 << " de la primera matriz: ";
+            int num1;
+            cin >> num1;
+            cout << "Ingresa el denominador de la fila " << i + 1 << " y columna " << j + 1 << " de la primera matriz: ";
+            int den1;
+            cin >> den1;
+            fraccion f1(num1, den1);
+            mat1[i][j] = // Asumiendo que hay un método getValue() para obtener el valor de la fracción
+        }
+    }
     return 0;
 }
