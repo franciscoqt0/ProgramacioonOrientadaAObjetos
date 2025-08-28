@@ -27,15 +27,34 @@ public:
         simplificar();
     }
 
+
 };
+
+class calcular{
+private:
+    size_t n_;
+    vector<vector<fraccion>> A_, B_;
+public:
+explicit
+}
 
 int main() {
     int t;
+    int a, b;
 
-    cout << "Ingresa el tamaño de las 2 matrices cuadradas: ";
+    cout << "Ingresa el tamano para 2 matrices cuadradas: ";
     cin >> t;
-    vector<vector<double>> mat1(t, vector<double>(t, 0.0));
-    vector<vector<double>> mat2(t, vector<double>(t, 0.0));
+
+    if (t <= 0) {
+        cout << "El tamaño de la matriz debe ser un número positiv" << endl;
+        cin >> t;
+        return 1;
+    }else if (a <= 0 || b <= 0) {
+        cout << "El tamaño de la matriz debe ser menor o igual a 10" << endl;
+        return 1;
+    }
+    vector<vector<fraccion>> mat1(t, vector<fraccion>(t, fraccion(0, 1)));
+    vector<vector<fraccion>> mat2(t, vector<fraccion>(t, fraccion(0, 1)));
 
     for (int i = 0; i < t; i++) {
         for (int j = 0; j < t; j++) {
@@ -46,8 +65,20 @@ int main() {
             int den1;
             cin >> den1;
             fraccion f1(num1, den1);
-            mat1[i][j] = // Asumiendo que hay un método getValue() para obtener el valor de la fracción
+            mat1[i][j] = f1;
         }
     }
-    return 0;
+    for (int i = 0; i <t; i++){
+        for (int j = 0; j < t; j++) {
+            cout << "Ingresa el numerador de la fila " << i + 1 << " y columna " << j + 1 << " de la segunda matriz: ";
+            int num1;
+            cin >> num1;
+            cout << "Ingresa el denominador de la fila " << i + 1 << " y columna " << j + 1 << " de la segunda matriz: ";
+            int den1;
+            cin >> den1;
+            fraccion f2(num1, den1);
+            mat2[i][j] = f2;
+        }
+    }
+
 }
